@@ -1,8 +1,16 @@
+import avatarPlaceholder from '../../assets/avatar_placeholder.svg';
+import { useAuth } from '../../hooks/auth';
+import { api } from '../../services/api';
+
 import { Container, Profile, Input } from './styles';
 import { Link } from 'react-router-dom';
 
 export function Header() {
+  const { signOut, user } = useAuth();
+  const avatarUrl = user.avatar ? `${api.defaults.baseURL}/files/${user.avatar}` : avatarPlaceholder;
+
   return (
+
     <Container>
       <h1>RocketMovies</h1>
 
@@ -11,19 +19,16 @@ export function Header() {
       />
 
       <Link to="/profile">
-
         <Profile>
           <div>
-            <strong>Gustavo Minatto</strong>
-            <span> sair </span>
+            <h2>{user.name}</h2>
+            <span onClick={signOut}>sair</span>
           </div>
-          <img src="https://github.com/gustavo-minatto.png"
-            alt="Foto do usuario" />
-
-
+          <img src={avatarUrl}
+            alt={user.name} />
         </Profile>
-
       </Link>
+
 
     </Container>
   );

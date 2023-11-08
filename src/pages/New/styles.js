@@ -15,7 +15,7 @@ export const Container = styled.div`
     overflow-y: auto;
   }
 
-  h2{
+  h3{
     font-size: 20px;
     color: ${({ theme }) => theme.COLORS.GRAY};
     margin: 40px 0 24px 0;
@@ -33,20 +33,10 @@ export const Form = styled.form`
   max-width: 1150px;
   margin: 38px auto;
 
-  >header{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 36px;
-   
   h1{
     margin-top: 24px;
+    margin-bottom: 36px;
   }
-
-  a{
-    font-size: 20px;
-    color: ${({ theme }) => theme.COLORS.GRAY};
-  }
-}
  
   .button{
   display: flex;
@@ -58,7 +48,7 @@ export const Form = styled.form`
   }
 }
 
-  .aa{
+  .title{
     display: flex;
 
   :first-child{

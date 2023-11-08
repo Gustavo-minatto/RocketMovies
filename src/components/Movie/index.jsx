@@ -1,29 +1,57 @@
 import { Container } from './styles';
 import { AiFillStar } from "react-icons/ai";
 import { Section } from "../../components/Section";
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { api } from '../../services/api'
+import { useState, useEffect } from 'react';
 
-export function Movie(){
-  return(
-    <Container>
+export function Movie({ data, ...rest }) {
+  const [tags, setTags] = useState([]);
 
-      <h1>Interestellar</h1>
-      <AiFillStar/>
-      <AiFillStar/>
-      <AiFillStar/>
-      <AiFillStar/>
-      <AiFillStar/>
+  const navigate = useNavigate();
 
-      <Link to="/Preview">
-      <p>Pragas nas colheitas fizeram a civilização humana regredir para uma sociedade agrária em futuro de data desconhecida. Cooper, ex-piloto da NASA, tem uma fazenda com sua família. Murphy, a filha de dez anos de Cooper, acredita que seu quarto está assombrado por um fantasma que tenta se ...</p>
-        
-    
-      <div id='section'>
-      <Section title="Ficção Cientifica"/>
-      <Section title="Drama"/>
-      <Section title="Familia"/>
+  useEffect(() => {
+    async function fetchTags() {
+      const response = await api.get("/tags");
+      setTags(response.data)
+    }
+
+    fetchTags();
+  }, []);
+
+  function handleDetails(note_id) {
+    navigate(`/details/${note_id}`);
+  }
+
+  return (
+    <Container {...rest}
+      onClick={() => handleDetails(data.id)}
+    >
+
+      <h1>{data.title}</h1>
+      <AiFillStar />
+      <AiFillStar />
+      <AiFillStar />
+      <AiFillStar />
+      <AiFillStar />
+
+      <p className="description" >{data.description}</p>
+
+      <div className="section">
+
+        {tags &&
+          tags.map(tag => {
+            if (tag.note_id === data.id) {
+              return (
+                <li key={String(tag.id)}>
+                  <Section title={tag.name} />
+                </li>
+              );
+            }
+            return null;
+          })}
       </div>
-      </Link>
+
     </Container>
   )
 }

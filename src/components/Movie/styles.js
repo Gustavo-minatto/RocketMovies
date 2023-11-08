@@ -7,6 +7,19 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.COLORS.PINK_100};
   padding: 32px;
   border-radius: 16px;
+  cursor: pointer;
+
+  .description {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+  li{
+      list-style: none;
+      display: fle;
+      }
 
   h1{
     font-size: 24px;
@@ -24,7 +37,7 @@ export const Container = styled.div`
     font-weight: 400;
   }
 
-  #section{
+  .section{
     display: flex;
     align-items: center;
   }

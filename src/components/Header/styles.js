@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.header`
@@ -22,13 +21,11 @@ export const Container = styled.header`
 
 export const Profile = styled.div`
   display: flex;
-  align-items: center;
-  
+
   >div{
     display: flex;
     flex-direction: column;
-    margin-right: 16px;
-    line-height: 24px;
+    margin-top: 5px;
   }
 
   >img{
@@ -37,7 +34,7 @@ export const Profile = styled.div`
     border-radius: 50%;
   }
 
-  strong{
+  h2{
     font-size: 14px;
     color: ${({ theme }) => theme.COLORS.WHITE};
   }
