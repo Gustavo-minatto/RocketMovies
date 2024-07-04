@@ -39,7 +39,7 @@ export function New() {
 
   async function handleNewNote() {
     if (!title) {
-      return alert("Digite o titulo da nota")
+      return alert("Digite o titulo do Filme")
     }
 
     if (newTag) {
@@ -53,7 +53,7 @@ export function New() {
       tags
     })
 
-    alert("Nota criada com sucesso!");
+    alert("Filme criado com sucesso!");
     navigate(-1)
   }
 
