@@ -42,9 +42,17 @@ export function New() {
       return alert("Digite o titulo do Filme")
     }
 
-    if (newTag) {
+    if (newTag.trim() !== "") {
       return alert("Você deixou um Marcador no campo para adicionar, mas não clicou em adicionar. Clique para adicionar ou deixe o campo vázio.")
     }
+
+    const notaNumber = Number(nota);
+    if (isNaN(notaNumber) || notaNumber < 0 || notaNumber > 5) {
+      return alert("Digite uma nota válida entre 0 e 5");
+    }
+
+    alert("Filme criado com sucesso!");
+    handleBack('/');
 
     await api.post("notes", {
       title,
@@ -53,8 +61,6 @@ export function New() {
       tags
     })
 
-    alert("Filme criado com sucesso!");
-    navigate(-1)
   }
 
   return (
