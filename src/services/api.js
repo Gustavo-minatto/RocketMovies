@@ -1,6 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3333"
-  //baseURL: "https://cadastro-de-filmes.onrender.com"
+  baseURL: "https://node-back-end-lj80.onrender.com"
 });
